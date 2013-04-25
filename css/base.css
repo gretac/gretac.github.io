@@ -1,0 +1,51 @@
+body {
+	padding: 18px 0 0 18px;
+	width: 840px;
+	color: rgb(83, 72, 72);
+	font-size: 18px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul {
+	list-style: none;
+}
+
+.header {
+	height: 80px;
+	margin-bottom: 12px;
+	padding-left: 12px;
+	padding-top: 6px;
+	color: rgb(32, 21, 21);
+	/*background-color: rgb(81, 165, 186);*/
+}
+
+.header > h1 {
+	margin-bottom: 0;
+	margin-top: 18px;
+}
+
+.header > p {
+	margin-top: 18px;
+}
+
+.item > a {
+	text-decoration: none;
+	color: black;
+	/*color: rgb(81, 165, 186);*/
+	font-size: 24px;
+}
+
+.info > a {
+	text-decoration: none;
+	color: #0088cc;
+}
+
+#avatar {
+	width: 300px;
+	height: 280px;
+	background-image: url("../img/me.jpg");
+	background-size: 300px;
+	float: left;
+	margin-right: 18px;
+}
