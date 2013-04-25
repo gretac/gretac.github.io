@@ -1,7 +1,10 @@
 <html>
 	<head>
 		<title>Website Greta Cutulenco</title>
-		<link rel="stylesheet" type="text/css" href="base.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 	</head>
 
 	<body>
@@ -9,16 +12,64 @@
 			<h1>Greta Cutulenco</h1>
 			<!--p>Software Engineering student at University of Waterloo</p-->
 		</div>
-		<div class="info">
+		<!--div class="info">
 			<label></label>
 
 			<div class="item">
-				<a href="https://github.com/gretac">Profile</a>
+				<a href="https://github.com/gretac">Github</a>
 				<span> | </span>
 				<a href="https://github.com/Hudon/spike">Spike</a>
 				<span> | </span>
-				<a href="https://github.com/Hudon/lifelinevis">Lifelinevis</a>
+				<a href="">Lifelinevis</a>
 			</div>
+		</div-->
+
+		<div class="accordion" id="main">
+
+			<div class="accordion-group">
+				<div class="accordion-heading item">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#main" href="#about-info">
+						About Me
+					</a>
+				</div>
+
+				<div id="about-info" class="accordion-body collapse in">
+					<div class="accordion-inner info">
+						<div id="avatar"></div>
+						I am a Software Engineering student at the University of Waterloo.  
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-group">
+				<div class="accordion-heading item">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#main" href="#spike-info">
+						Spike: Brain Simulator Parallelization
+					</a>
+				</div>
+
+				<div id="spike-info" class="accordion-body collapse">
+					<div class="accordion-inner info">
+						<a href="https://github.com/Hudon/spike">Spike</a> aims to bring performance enhancements to the <a href="www.nengo.com">nengo project</a> through parallelization. We aim to run ensembles concurrently and split up ensembles to evenly distribute CPU load. We further plan to distribute the ensembles across machines using a fast transport protocol <a href="www.zeromq.com">0MQ</a>. 
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-group">
+				<div class="accordion-heading item">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#main" href="#vis-info">
+						Lifelinevis
+					</a>
+				</div>
+
+				<div id="vis-info" class="accordion-body collapse">
+					<div class="accordion-inner info">
+						<a href="https://github.com/Hudon/lifelinevis">Lifelinevis</a> is a set of dynamic visualizations that demonstrate message propagation within QNX. The project utilises mTags, lightweight meta-data that augments QNX inter-process communication through biomarker-line behavior. You can read more about mTags here: <a href="https://uwaterloo.ca/embedded-software-group/publications/mtags-augmenting-microkernel-messages-lightweight-metadata">research paper</a>. You can also read more about Lifelinevis here: <a href="https://docs.google.com/document/d/1ipuFCCEpD82O_8B4vVjIbENxqXjc1gW4Ns8ua-QXJ6w/edit?usp=sharing">report</a>.
+					</div>
+				</div>
+			</div>
+
 		</div>
+
  	</body>
 </html>
