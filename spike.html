@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Greta Cutulenco</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+  </head>
+
+  <body>
+  <div class="container">
+    <div class="main header">
+      <a href="index.html">
+        <span class="glyphicon glyphicon-home" style="font-size: 32px;"></span>
+      </a>
+    </div>
+
+    <hr class="section-div">
+
+    <div class="main">
+      <h1>Spike: Brain Simulator Performance Optimization
+        <a href="https://github.com/Hudon/spike">
+          <img src="../img/github-mark.png" style="width: 45px; height: 45px;">
+        </a>
+      </h1>
+      <br \>
+      <p>Spike is an open source project that brings concurrency and
+      distribution to the largest Functional Brain Simulator currently
+      in existence. The simulator, <a href="http://www.nengo.ca">Nengo</a>,
+      is a project developed by the
+      <a href="http://compneuro.uwaterloo.ca/index.html">Computational Neuroscience Research Group</a>
+      at the Centre of Theoretical Neuroscience at the University of
+      Waterloo. The simulator is used to run
+      <a href="http://compneuro.uwaterloo.ca/publications/stewart2012c.html">
+      Spaun</a> (Semantic Pointer Architecture: Unified Network),
+      a network of 2.5 million
+      spiking neurons. Given such large scale simulations, the simulator is extremely
+      slow at performing computations. For instance, to calculate a second of
+      data for Spaun, it requires hours of computation. </p>
+
+      <p>Spike aims to improve the performance of the simulator by taking
+      advantage of the modularity of the simulator components. In Nengo, the
+      simulator executes all the components of the simulation sequentially.
+      Spike, on the other hand, draws a clear separation between the components
+      and useses message passing to communicate between them. The redesign
+      then allows the components to be executed in parallel and distributed.</p>
+
+      <p>Nengo is originally a Java simulator. However, there are multiple
+      versions of the simulator written in various languages. Spike uses
+      a python implementation, which takes advantage of Numpy and Theano
+      libraries. The communication is done over TCP using a fast transport
+      protocol <a href="http://www.zeromq.com">0MQ</a>.</p>
+    </div>
+
+    <hr class="section-div">
+
+    <div class="main">
+      <h1>Spike Architecture</h1>
+      <br \>
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>The Administrator</h2>
+          <br \>
+          <p>A user script defines a model to be simulated. Running the script
+          initiates the Administrator, the primary point of the simulator. The
+          administrator creates nodes for every group of neurons in the model
+          and establishes desired connections between them. The administrator
+          also creates worker interfaces for the nodes. The interfaces are the
+          gateways for communication between the nodes and the administrator.
+          When the nodes are ready, the distribution manager sends the node
+          definitions to available machines to be executed.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <img src="../img/administrator.png" style="width: 250x; height: 450px;">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="../img/daemon.png" style="width: 560x; height: 330px;">
+        </div>
+
+        <div class="col-lg-6">
+          <h2>The Worker Daemons</h2>
+          <br \>
+          <p>The machines on the network run a daemon. The daemon is used for
+          incoming node definitions. Once it receives a definition, the
+          daemon spawns a new process for the node.</p>
+
+          <p>Nodes communicate using TCP connections. Each node sends its
+          outputs to the outgoing nodes and receives inputs from incoming nodes.
+          Nodes communicate with the admin for synchronization - nodes know
+          when the simulation has started and the admin needs to know when
+          it finished.</p>
+
+          <p>Probes are special kinds of nodes. They are coupled with some
+          node in the network and collect all the outputs of the node. The
+          data that probes collect is then used for simulation analysis.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>The Distributed Simulator</h2>
+          <br \>
+          <p>This is the complete architecture for the distributed simulator
+          so far. The user's machine executes the administrator. The nodes
+          from the model are distributed by the administrator across the
+          available machines. During execution, nodes have blocking receives
+          and non-blocking sends. Thus nodes compute as long as inputs are
+          ready.</p>
+        </div>
+
+        <div class="col-lg-8">
+          <img src="../img/spike-config.png" style="width: 560x; height: 560px;">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </body>
+</html>
