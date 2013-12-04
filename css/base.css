@@ -1,15 +1,13 @@
 body {
 	font-size: 17px;
 	background-image: url("../img/background.jpg");
-	/*background-size: 1900px;*/
-	/*background-repeat: no-repeat;*/
 }
 
 hr {
 	border: none;
 }
 
-.btn-lg {
+.btn-lg.home {
 	padding: 10px 16px 10px 13px;
 }
 
@@ -17,14 +15,12 @@ hr {
 	padding: 36px 36px 36px 36px;
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 1em;
-	/*box-shadow: 5px 5px 5px gray;*/
 }
 
 div.header {
 	padding: 6px 6px 12px 0px;
 }
-div.header a {
-	color: black;
+div.header span {
 	font-size: 32px;
 }
 
@@ -39,7 +35,6 @@ div.header a {
 
 .container .jumbotron {
 	background-color: white;
-	/*background-image: url("../img/gradient.png");*/
 	border-radius: 0.7em;
 }
 
